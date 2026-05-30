@@ -1,5 +1,11 @@
-from pyradios import RadioBrowser
+import os
+
+os.environ["PATH"] = r"C:\Program Files\MPV Player" + os.pathsep + os.environ["PATH"] ##check if works on linux
+
+##ADD VERSION CHECK OF MPV AND PYRADIOS
+
 import mpv
+from pyradios import RadioBrowser
 import json
 import random
 
@@ -77,12 +83,12 @@ def menu() :
     print("-"*len(string))
     print(string)
     print("-"*len(string))
-    print("C: Change country")
-    print("R: Randomize")
-    print("S: Set channel")
-    print("F: Favourite channels")
+    print("C:  Change country")
+    print("R:  Randomize")
+    print("S:  Set channel")
+    print("F:  Favourite channels")
     print("SV: Save current channel") #think about cmds !
-    print("Q: Quit")
+    print("Q:  Quit")
     
     if (not paused):
         playing_str = "Now playing: " + channel_name[0]["name"]+ " | " + channel_name[0]["country"] + " |"

@@ -1,7 +1,5 @@
 from cli_radio import *
 
-##Add elapsed clock!
-
 init()
 while (True) :
 
