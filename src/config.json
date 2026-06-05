@@ -1,6 +1,7 @@
 {
-  "startup_channel": "YleX",
+  "startup_channel": "Ylex",
   "startup_region":"Finland",
   "autoplay": true,
+  "startup_volume": 70,
   "startup_icon": true
 }
