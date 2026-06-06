@@ -7,3 +7,4 @@ wave.json
 *.build
 *.dist
 *.onefile-build
+/venv

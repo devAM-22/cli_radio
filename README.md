@@ -39,24 +39,49 @@ The application allows users to browse, search, and play radio stations by count
 ### Install MPV Media Player (Windows)
 
 Download and install MPV:
-
-`winget install mpv`
-
+```bash
+winget install mpv
+```
 Make sure `libmpv` is available in your MPV installation directory (e.g. `C:\Program Files\MPV Player`).
 
 ### Environment setup (Windows)
 
 Virtual environment for developing can easily be setup by running `setup.bat` in the root folder.
 
----
+### Install MPV Media Player (Linux)
 
-## ▶️ How to Run
+MPV is usually pre-installed in most common Linux distributions. However if this is not the case you can install it by using your package manager:
 
-First navigate to src and then run the application:
+
+#### Debian/Ubuntu
 
 ```bash
-python main.py
+sudo apt install mpv
 ```
+
+#### Fedora
+
+```bash
+sudo dnf install mpv
+```
+
+#### Arch/Manjaro
+
+```bash
+sudo pacman -S mpv
+```
+
+It's essential that `libmpv` is installed.
+
+### Environment setup (Linux)
+
+Similarly to Windows, virtual environment for developing can easily be setup by running `setup.sh` in the root folder.
+
+---
+
+### ▶️ How to run?
+
+Standalone executables for Linux and Windows are available in releases page. Note that executable needs to be in the same file path as `config.json` and `icon.txt`.
 
 ---
 ## License
