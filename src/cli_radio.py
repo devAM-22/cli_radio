@@ -7,6 +7,15 @@ import json
 import random
 import time
 
+from pathlib import Path
+import sys
+
+BASE_DIR = Path(sys.argv[0]).resolve().parent
+
+config_path = BASE_DIR / "config.json"
+fav_path = BASE_DIR / "fav.json"
+icon_path = BASE_DIR / "icon.txt"
+
 
 class cli_radio:
     """
@@ -98,7 +107,7 @@ class cli_radio:
         self.clear_screen()
 
         try:
-            with open("config.json", "r", encoding="utf-8") as file:
+            with open(config_path, "r", encoding="utf-8") as file:
                 config = json.load(file)
 
             self.channel = config["startup_channel"]
@@ -110,9 +119,7 @@ class cli_radio:
             self.channel_count()
 
             # Prepare initial playback
-            self.play(self.channel, self.region)
             self.player.volume = self.volume
-
             self.paused = True
 
             if self.autoplay:
@@ -138,7 +145,7 @@ class cli_radio:
     def icon(self):
         """Prints startup icon if enabled in config."""
         if self.icon_in_startup:
-            with open("icon.txt", "r", encoding="utf-8") as f:
+            with open(icon_path, "r", encoding="utf-8") as f:
                 print(f.read())
 
     def menu(self):
@@ -315,7 +322,7 @@ class cli_radio:
     def select_favourite(self):
         """Loads and manages favorite stations."""
         try:
-            with open("fav.json", "r", encoding="utf-8") as f:
+            with open(fav_path, "r", encoding="utf-8") as f:
                 favorites = json.load(f)
 
             if isinstance(favorites, dict):
@@ -334,7 +341,7 @@ class cli_radio:
                 idx = int(input("Remove number: ")) - 1
                 removed = favorites.pop(idx)
 
-                with open("fav.json", "w", encoding="utf-8") as f:
+                with open(fav_path, "w", encoding="utf-8") as f:
                     json.dump(favorites, f, indent=4)
 
                 print(f"Removed {removed['name']}")
@@ -356,7 +363,7 @@ class cli_radio:
         }
 
         try:
-            with open("fav.json", "r", encoding="utf-8") as f:
+            with open(fav_path, "r", encoding="utf-8") as f:
                 favorites = json.load(f)
 
             if isinstance(favorites, dict):
@@ -368,7 +375,7 @@ class cli_radio:
         if new not in favorites:
             favorites.append(new)
 
-        with open("fav.json", "w", encoding="utf-8") as f:
+        with open(fav_path, "w", encoding="utf-8") as f:
             json.dump(favorites, f, indent=4)
 
 
